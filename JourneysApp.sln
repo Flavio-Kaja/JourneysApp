@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JourneyService", "JourneyService", "{BD99BECD-8C0D-4C4E-810C-A4025E7D8966}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A673D0D2-D838-4CFD-A595-161038BFEB7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JourneyService", "JourneyService\src\JourneyService\JourneyService.csproj", "{FFFFA11B-9781-4664-8E6A-5E4F8FACB836}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6F9592C5-6516-4371-BE4B-2EAD9FEAC7DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JourneyService.IntegrationTests", "JourneyService\tests\JourneyService.IntegrationTests\JourneyService.IntegrationTests.csproj", "{8D959A63-1B6F-4B1D-B6AD-6FC516235CD2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JourneyService.FunctionalTests", "JourneyService\tests\JourneyService.FunctionalTests\JourneyService.FunctionalTests.csproj", "{6D58326B-29DA-4C79-B898-9320774536AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JourneyService.SharedTestHelpers", "JourneyService\tests\JourneyService.SharedTestHelpers\JourneyService.SharedTestHelpers.csproj", "{DCC1430A-BF9E-4652-B65E-F26AACCFC684}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JourneyService.UnitTests", "JourneyService\tests\JourneyService.UnitTests\JourneyService.UnitTests.csproj", "{785E4601-25DB-4C5D-884A-7A53FD42B538}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFFFA11B-9781-4664-8E6A-5E4F8FACB836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFFFA11B-9781-4664-8E6A-5E4F8FACB836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFFFA11B-9781-4664-8E6A-5E4F8FACB836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFFFA11B-9781-4664-8E6A-5E4F8FACB836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D959A63-1B6F-4B1D-B6AD-6FC516235CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D959A63-1B6F-4B1D-B6AD-6FC516235CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D959A63-1B6F-4B1D-B6AD-6FC516235CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D959A63-1B6F-4B1D-B6AD-6FC516235CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D58326B-29DA-4C79-B898-9320774536AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D58326B-29DA-4C79-B898-9320774536AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D58326B-29DA-4C79-B898-9320774536AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D58326B-29DA-4C79-B898-9320774536AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCC1430A-BF9E-4652-B65E-F26AACCFC684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC1430A-BF9E-4652-B65E-F26AACCFC684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC1430A-BF9E-4652-B65E-F26AACCFC684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC1430A-BF9E-4652-B65E-F26AACCFC684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{785E4601-25DB-4C5D-884A-7A53FD42B538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785E4601-25DB-4C5D-884A-7A53FD42B538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{785E4601-25DB-4C5D-884A-7A53FD42B538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{785E4601-25DB-4C5D-884A-7A53FD42B538}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A673D0D2-D838-4CFD-A595-161038BFEB7A} = {BD99BECD-8C0D-4C4E-810C-A4025E7D8966}
+		{FFFFA11B-9781-4664-8E6A-5E4F8FACB836} = {A673D0D2-D838-4CFD-A595-161038BFEB7A}
+		{6F9592C5-6516-4371-BE4B-2EAD9FEAC7DB} = {BD99BECD-8C0D-4C4E-810C-A4025E7D8966}
+		{8D959A63-1B6F-4B1D-B6AD-6FC516235CD2} = {6F9592C5-6516-4371-BE4B-2EAD9FEAC7DB}
+		{6D58326B-29DA-4C79-B898-9320774536AF} = {6F9592C5-6516-4371-BE4B-2EAD9FEAC7DB}
+		{DCC1430A-BF9E-4652-B65E-F26AACCFC684} = {6F9592C5-6516-4371-BE4B-2EAD9FEAC7DB}
+		{785E4601-25DB-4C5D-884A-7A53FD42B538} = {6F9592C5-6516-4371-BE4B-2EAD9FEAC7DB}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  journeyservice-db:
+    image: postgres
+    restart: always
+    ports:
+      - '53023:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dev_journeyservice
+    volumes:
+      - journeyservice-data:/var/lib/postgresql/data
+
+  journeyservice-app:
+    image: flaviok03/journeysapp
+    restart: always
+    ports:
+      - '5000:5000'
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__JourneyService=Host=journeyservice-db;Port=5432;Database=dev_journeyservice;Username=postgres;Password=postgres;
+    depends_on:
+      - journeyservice-db
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "53029:5775/udp"
+      - "53028:6831/udp"
+      - "53030:6832/udp"
+      - "53031:5778"
+      - "53032:16686"
+      - "53033:14250"
+      - "53034:14268"
+      - "53035:14269"
+      - "53036:9411"
+
+volumes:
+  # compose volumes marker - do not delete
+  journeyservice-data:

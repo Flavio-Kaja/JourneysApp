@@ -1,0 +1,471 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JourneyService</name>
+    </assembly>
+    <members>
+        <member name="M:JourneyService.Controllers.v1.AdminController.GetJourneysDashboard(JourneyService.Domain.Journeys.Dtos.JourneyDashboardParametersDto)">
+            <summary>
+            Gets the journeys dashboard.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.AdminController.GetMonthlyRouteDistance(JourneyService.Domain.Journeys.Dtos.MonthlyRoutesParametersDto)">
+            <summary>
+            Gets the monthly route distance.
+            </summary>
+            <param name="journeyParametersDto">The filtering parameters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.JourneysController.AddJourney(JourneyService.Domain.Journeys.Dtos.PostJourneyDto)">
+            <summary>
+            Creates a new Journey record.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.JourneysController.GetJourney(System.Guid)">
+            <summary>
+            Gets a single Journey by ID.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.JourneysController.GetJourneys(JourneyService.Domain.Journeys.Dtos.JourneyParametersDto)">
+            <summary>
+            Gets a list of all Journeys.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.JourneysController.UpdateJourney(System.Guid,JourneyService.Domain.Journeys.Dtos.PostJourneyDto)">
+            <summary>
+            Updates an entire existing Journey.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.JourneysController.DeleteJourney(System.Guid)">
+            <summary>
+            Deletes an existing Journey record.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.TransportationTypesController.AddTransportationType(JourneyService.Domain.TransportationTypes.Dtos.PostTransportationTypeDto)">
+            <summary>
+            Creates a new Transportation Type record.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.TransportationTypesController.GetTransportationType(System.Guid)">
+            <summary>
+            Gets a single TransportationType by ID.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.TransportationTypesController.GetTransportationTypes">
+            <summary>
+            Gets a list of all Transportation Types.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.TransportationTypesController.UpdateTransportationType(System.Guid,JourneyService.Domain.TransportationTypes.Dtos.PostTransportationTypeDto)">
+            <summary>
+            Updates an existing Transportation Type.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Controllers.v1.TransportationTypesController.DeleteTransportationType(System.Guid)">
+            <summary>
+            Deletes an existing TransportationType record.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Databases.EntityConfigurations.JourneyConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{JourneyService.Domain.Journeys.Journey})">
+            <summary>
+            The database configuration for Journeys. 
+            </summary>
+        </member>
+        <member name="M:JourneyService.Databases.EntityConfigurations.TransportationTypeConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{JourneyService.Domain.TransportationTypes.TransportationType})">
+            <summary>
+            The database configuration for TransportationTypes. 
+            </summary>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Dtos.JourneyParametersDto.UserId">
+            <summary>
+            Gets or sets the user identifier.
+            </summary>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Dtos.JourneyParametersDto.MinimumTravelDistance">
+            <summary>
+            Gets or sets the minimum travel distance.
+            </summary>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Dtos.JourneyParametersDto.MaximumTravelDistance">
+            <summary>
+            Gets or sets the maximum travel distance.
+            </summary>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Dtos.JourneyParametersDto.StartingTimeFrom">
+            <summary>
+            Gets or sets the starting time from.
+            </summary>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Dtos.JourneyParametersDto.StartingTimeTo">
+            <summary>
+            Gets or sets the starting time to.
+            </summary>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Dtos.JourneyParametersDto.SortBy">
+            <summary>
+            Gets or sets the sort by property.
+            </summary>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Dtos.JourneyParametersDto.Descending">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:JourneyService.Domain.Journeys.Dtos.JourneyParametersDto"/> is descending.
+            </summary>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Dtos.JourneyParametersDto.HasAchievedGoal">
+            <summary>
+            Gets or sets a value indicating whether this instance has achieved goal.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Dtos.JourneyParametersDto.GenerateCacheKey">
+            <summary>
+            Generates the cache key.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Handler.Handle(JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Query,System.Threading.CancellationToken)">
+            <summary>
+            Get the journey dashboard data, if the request demands user filtering, retrive user data first so that we can take advantage of the user pagination,
+            otherwise filter by journeys first so we can take advantage of the journeys pagination
+            </summary>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Handler.ApplyUserFilters(JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Query,JourneyService.Infrastructure.Models.UserParametersDto,System.Linq.IQueryable{JourneyService.Domain.Journeys.Journey}@)">
+            <summary>
+            Filter using the user specific filters
+            </summary>
+            <param name="request"></param>
+            <param name="userParams"></param>
+            <param name="collection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Handler.FilterJourneyProperties(JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Query,System.Linq.IQueryable{JourneyService.Domain.Journeys.Journey}@)">
+            <summary>
+            Filter using the journey specific filters
+            </summary>
+            <param name="request"></param>
+            <param name="collection"></param>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Handler.ApplySorting(JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Query,System.Linq.IQueryable{JourneyService.Domain.Journeys.Journey}@)">
+            <summary>
+            Apply ordering to the journy query
+            </summary>
+            <param name="request"></param>
+            <param name="collection"></param>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Handler.GetUserList(JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Query,System.Linq.IQueryable{JourneyService.Domain.Journeys.Journey},JourneyService.Infrastructure.Models.UserParametersDto,JourneyService.Wrappers.PagedList{JourneyService.Infrastructure.Models.UserDto})">
+            <summary>
+            Get the user list from grpc
+            </summary>
+            <param name="request"></param>
+            <param name="collection"></param>
+            <param name="userParams"></param>
+            <param name="users"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Features.GetJourneyDashboard.Handler.CombineJourneysAndUsers(System.Linq.IQueryable{JourneyService.Domain.Journeys.Journey},JourneyService.Wrappers.PagedList{JourneyService.Infrastructure.Models.UserDto})">
+            <summary>
+            Get the journey data along with the users data
+            </summary>
+            <param name="collection"></param>
+            <param name="users"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JourneyService.Domain.Journeys.Journey">
+            <summary>Gets or sets the journey entity</summary>
+            <seealso cref="T:JourneyService.Domain.BaseEntity" />
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.UserId">
+            <summary>Gets the user identifier.</summary>
+            <value>The user identifier.</value>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.StartingLocationId">
+            <summary>Gets the starting location identifier.</summary>
+            <value>The starting location identifier.</value>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.StartingLocation">
+            <summary>Gets the starting location.</summary>
+            <value>The starting location.</value>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.ArrivalLocationId">
+            <summary>Gets the arrival location identifier.</summary>
+            <value>The arrival location identifier.</value>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.ArrivalLocation">
+            <summary>Gets the arrival location.</summary>
+            <value>The arrival location.</value>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.StartingTime">
+            <summary>Gets the starting time.</summary>
+            <value>The starting time.</value>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.ArrivalTime">
+            <summary>Gets the arrival time.</summary>
+            <value>The arrival time.</value>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.TransportationTypeId">
+            <summary>Gets the transportation type identifier.</summary>
+            <value>The transportation type identifier.</value>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.TransportationType">
+            <summary>Gets the type of the transportation.</summary>
+            <value>The type of the transportation.</value>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.RouteDistance">
+            <summary>Gets the route distance.</summary>
+            <value>The route distance.</value>
+        </member>
+        <member name="P:JourneyService.Domain.Journeys.Journey.IsGoalAchieved">
+            <summary>Gets a value indicating whether this instance is goal achieved.</summary>
+            <value>
+              <c>true</c> if this instance is goal achieved; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Journey.SetGoalAchieved(System.Double,System.Int32)">
+            <summary>Sets the goal achieved.</summary>
+            <param name="distanceTraveledToday">The distance traveled today.</param>
+            <param name="dailyGoal">The daily goal.</param>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Journey.SetStartingLocationId(System.Guid)">
+            <summary>Sets the starting location identifier.</summary>
+            <param name="locationId">The location identifier.</param>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Journey.SetArrivalLocationId(System.Guid)">
+            <summary>Sets the arrival location identifier.</summary>
+            <param name="locationId">The location identifier.</param>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Journey.Create(JourneyService.Domain.Journeys.Dtos.PostJourneyDto)">
+            <summary>Creates the specified journey for creation.</summary>
+            <param name="journeyForCreation">The journey for creation.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Journey.Update(JourneyService.Domain.Journeys.Dtos.PostJourneyDto)">
+            <summary>Updates the specified journey for update.</summary>
+            <param name="journeyForUpdate">The journey for update.</param>
+        </member>
+        <member name="M:JourneyService.Domain.Journeys.Journey.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:JourneyService.Domain.Journeys.Journey" /> class.</summary>
+        </member>
+        <member name="T:JourneyService.Domain.Locations.Services.ILocationService">
+            <summary>
+            Interface that defines the retrieval of geo location data from the open street map public api
+            </summary>
+        </member>
+        <member name="T:JourneyService.Domain.Locations.Services.LocationService">
+            <summary>
+            Service that handles the retrieval of geo location data from the open street map public api
+            </summary>
+        </member>
+        <member name="M:JourneyService.Domain.Locations.Services.LocationService.GetOrCreateLocationAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets or adds a new location
+            </summary>
+            <param name="locationName"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:JourneyService.Exceptions.LocationNotFoundException"></exception>
+        </member>
+        <member name="T:JourneyService.Domain.TransportationTypes.Dtos.PostTransportationTypeDto">
+            <summary>
+            Dto for submiting create or update requests for transportation types
+            </summary>
+        </member>
+        <member name="T:JourneyService.Domain.TransportationTypes.Dtos.TransportationTypeDtoValidator">
+            <summary>
+            Validatior for post transportation types
+            </summary>
+            <seealso cref="!:FluentValidation.AbstractValidator&lt;JourneyService.Domain.TransportationTypes.Dtos.PostTransportationTypeDto&gt;" />
+        </member>
+        <member name="T:JourneyService.Domain.TransportationTypes.TransportationType">
+            <summary>
+            The transportation type entity
+            </summary>
+            <seealso cref="T:JourneyService.Domain.BaseEntity" />
+        </member>
+        <member name="P:JourneyService.Domain.TransportationTypes.TransportationType.Type">
+            <summary>Gets the type.</summary>
+            <value>The type.</value>
+        </member>
+        <member name="M:JourneyService.Domain.TransportationTypes.TransportationType.Create(JourneyService.Domain.TransportationTypes.Dtos.PostTransportationTypeDto)">
+            <summary>Create a transportation type</summary>
+            <param name="transportationTypeForCreation">The transportation type for creation.</param>
+        </member>
+        <member name="M:JourneyService.Domain.TransportationTypes.TransportationType.Update(JourneyService.Domain.TransportationTypes.Dtos.PostTransportationTypeDto)">
+            <summary>Updates the specified transportation </summary>
+            <param name="transportationTypeForUpdate">The transportation type update data.</param>
+        </member>
+        <member name="M:JourneyService.Extensions.Services.WebAppServiceConfiguration.AddBoundaryServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])">
+            <summary>
+            Registers all services in the assembly of the given interface.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Infrastructure.Models.UserParametersDto.SetFilterByUserId(System.Collections.Generic.IEnumerable{System.Guid})">
+            <summary>
+            When filtering by user id ignore pagination filters
+            </summary>
+            <param name="userIds">The user ids.</param>
+        </member>
+        <member name="T:JourneyService.Middleware.ProblemDetailsConfigurationExtension">
+            <summary>
+            Contains extension methods for the ProblemDetails library's ProblemDetailsOptions.
+            </summary>
+        </member>
+        <member name="M:JourneyService.Middleware.ProblemDetailsConfigurationExtension.ConfigureProblemDetails(Hellang.Middleware.ProblemDetails.ProblemDetailsOptions)">
+            <summary>
+            Configures mappings from certain exception types to HTTP status codes.
+            </summary>
+            <param name="options">The ProblemDetailsOptions to configure.</param>
+        </member>
+        <member name="M:JourneyService.Middleware.ProblemDetailsConfigurationExtension.MapFluentValidationException(Hellang.Middleware.ProblemDetails.ProblemDetailsOptions)">
+            <summary>
+            Maps ValidationException to a custom ProblemDetails response.
+            </summary>
+            <param name="options">The ProblemDetailsOptions to configure.</param>
+        </member>
+        <member name="M:JourneyService.Middleware.ProblemDetailsConfigurationExtension.MapValidationException(Hellang.Middleware.ProblemDetails.ProblemDetailsOptions)">
+            <summary>
+            Maps ValidationException to a custom ProblemDetails response.
+            </summary>
+            <param name="options">The ProblemDetailsOptions to configure.</param>
+        </member>
+        <member name="T:JourneyService.Migrations.Init">
+            <inheritdoc />
+        </member>
+        <member name="M:JourneyService.Migrations.Init.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:JourneyService.Migrations.Init.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:JourneyService.Migrations.Init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:JourneyService.Migrations.MakeCreatedByNullable">
+            <inheritdoc />
+        </member>
+        <member name="M:JourneyService.Migrations.MakeCreatedByNullable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:JourneyService.Migrations.MakeCreatedByNullable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:JourneyService.Migrations.MakeCreatedByNullable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:JourneyService.NotificationHandlers.ClearJourneyCacheHandler">
+            <summary>
+            When a new domain event is publiched, clear all journey data
+            </summary>
+            <seealso cref="!:MediatR.INotificationHandler&lt;JourneyService.Domain.DomainEvent&gt;" />
+        </member>
+        <member name="P:JourneyService.Parameters.BasePaginationParameters.MaxPageSize">
+            <summary>
+            Gets or sets the maximum size of the page.
+            </summary>
+        </member>
+        <member name="P:JourneyService.Parameters.BasePaginationParameters.DefaultPageSize">
+            <summary>
+            Gets or sets the default size of the page.
+            </summary>
+        </member>
+        <member name="P:JourneyService.Parameters.BasePaginationParameters.PageNumber">
+            <summary>
+            Gets or sets the page number.
+            </summary>
+        </member>
+        <member name="P:JourneyService.Parameters.BasePaginationParameters.PageSize">
+            <summary>
+            Gets or sets the size of the page.
+            </summary>
+        </member>
+        <member name="T:UserService.Protos.UserServiceReflection">
+            <summary>Holder for reflection information generated from Protos/UserService.proto</summary>
+        </member>
+        <member name="P:UserService.Protos.UserServiceReflection.Descriptor">
+            <summary>File descriptor for Protos/UserService.proto</summary>
+        </member>
+        <member name="F:UserService.Protos.UserParametersRequest.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserParametersRequest.FirstNameFieldNumber">
+            <summary>Field number for the "first_name" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserParametersRequest.LastNameFieldNumber">
+            <summary>Field number for the "last_name" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserParametersRequest.MinDailyGoalFieldNumber">
+            <summary>Field number for the "min_daily_goal" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserParametersRequest.MaxDailyGoalFieldNumber">
+            <summary>Field number for the "max_daily_goal" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserParametersRequest.SortByFieldNumber">
+            <summary>Field number for the "sort_by" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserParametersRequest.DescendingFieldNumber">
+            <summary>Field number for the "descending" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserParametersRequest.PageNumberFieldNumber">
+            <summary>Field number for the "page_number" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserParametersRequest.PageSizeFieldNumber">
+            <summary>Field number for the "page_size" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserParametersRequest.UserIdsFieldNumber">
+            <summary>Field number for the "user_ids" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserListResponse.UsersFieldNumber">
+            <summary>Field number for the "users" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserListResponse.TotalCountFieldNumber">
+            <summary>Field number for the "total_count" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserListResponse.PageNumberFieldNumber">
+            <summary>Field number for the "page_number" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserListResponse.PageSizeFieldNumber">
+            <summary>Field number for the "page_size" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserDto.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserDto.FirstNameFieldNumber">
+            <summary>Field number for the "first_name" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserDto.LastNameFieldNumber">
+            <summary>Field number for the "last_name" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserDto.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserDto.UserNameFieldNumber">
+            <summary>Field number for the "user_name" field.</summary>
+        </member>
+        <member name="F:UserService.Protos.UserDto.DailyGoalFieldNumber">
+            <summary>Field number for the "daily_goal" field.</summary>
+        </member>
+        <member name="P:UserService.Protos.UserService.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:UserService.Protos.UserService.UserServiceClient">
+            <summary>Client for UserService</summary>
+        </member>
+        <member name="M:UserService.Protos.UserService.UserServiceClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for UserService</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:UserService.Protos.UserService.UserServiceClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for UserService that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:UserService.Protos.UserService.UserServiceClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:UserService.Protos.UserService.UserServiceClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:UserService.Protos.UserService.UserServiceClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+    </members>
+</doc>
